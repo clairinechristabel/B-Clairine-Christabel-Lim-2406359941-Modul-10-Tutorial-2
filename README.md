@@ -26,3 +26,9 @@ Hal ini dapat terjadi secara konkuren (bersamaan) tanpa saling menunggu *input* 
 
 ### Screenshots
 ![screenshot_terminal](image.png)
+## Experiment 2.2: Modifying port
+Untuk mengubah *port* koneksi *websocket*, kita harus mengubahnya di dua tempat karena komunikasi ini melibatkan **server** dan **client**:
+1. Di `src/bin/server.rs`: Mengubah `TcpListener::bind("127.0.0.1:2000")` menjadi `TcpListener::bind("127.0.0.1:8080")` agar server mendengarkan (listen) koneksi masuk pada *port* 8080.
+2. Di `src/bin/client.rs`: Mengubah URI `ws://127.0.0.1:2000` menjadi `ws://127.0.0.1:8080` agar klien tahu bahwa ia harus menghubungi *port* 8080.
+
+Kedua belah pihak tetap menggunakan protokol *websocket* yang sama. Hal ini didefinisikan secara eksplisit oleh klien pada bagian URI dengan awalan `ws://` (`ws://127.0.0.1:8080`), yang menandakan bahwa koneksi tersebut akan dinegosiasikan (di-*upgrade* dari TCP/HTTP biasa) menjadi protokol WebSocket. Di sisi *server*, hal ini ditangani secara otomatis oleh *library* `tokio_websockets` ketika klien mengirimkan *request upgrade* tersebut.
