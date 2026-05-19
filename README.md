@@ -32,3 +32,13 @@ Untuk mengubah *port* koneksi *websocket*, kita harus mengubahnya di dua tempat 
 2. Di `src/bin/client.rs`: Mengubah URI `ws://127.0.0.1:2000` menjadi `ws://127.0.0.1:8080` agar klien tahu bahwa ia harus menghubungi *port* 8080.
 
 Kedua belah pihak tetap menggunakan protokol *websocket* yang sama. Hal ini didefinisikan secara eksplisit oleh klien pada bagian URI dengan awalan `ws://` (`ws://127.0.0.1:8080`), yang menandakan bahwa koneksi tersebut akan dinegosiasikan (di-*upgrade* dari TCP/HTTP biasa) menjadi protokol WebSocket. Di sisi *server*, hal ini ditangani secara otomatis oleh *library* `tokio_websockets` ketika klien mengirimkan *request upgrade* tersebut.
+
+## Experiment 2.3: Small changes, add IP and Port
+Untuk mempermudah pelacakan pesan pada antarmuka *chat*, saya melakukan beberapa modifikasi format teks yang di-*print* ke terminal:
+1. Di `src/bin/server.rs`: Menambahkan log ketika pesan diterima dari *client* dengan baris `println!("From client {addr:?} {text:?}");` sebelum *server* me-*broadcast* pesan tersebut. Saya juga memodifikasi log koneksi awal menjadi `"New connection from Clairine's Computer {addr:?}"`.
+2. Di `src/bin/client.rs`: Menambahkan baris ucapan selamat datang saat pertama kali *client* terhubung dengan mengeksekusi `println!("Clairine's Computer - From server: Welcome to chat! Type a message");`. Kemudian, saat *client* menerima pesan dari server, saya menambahkan teks awalan sehingga menjadi `println!("Clairine's Computer - From server: {}", msg.as_text().unwrap());`.
+
+Modifikasi ini bertujuan agar kita bisa memahami dengan jelas alur pengiriman pesan, sehingga terlihat bahwa setiap teks balasan yang muncul di klien benar-benar merupakan pesan yang telah dirutekan ulang (di-*relay*) oleh *server*.
+
+### Screenshots
+![screenshot_terminal_2](image-1.png)
