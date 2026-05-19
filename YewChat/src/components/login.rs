@@ -27,11 +27,17 @@ pub fn login() -> Html {
     };
 
     html! {
-       <div class="bg-gray-800 flex w-screen">
+       <div class="bg-black flex w-screen h-screen items-center justify-center font-mono">
             <div class="container mx-auto flex flex-col justify-center items-center">
-                <form class="m-4 flex">
-                    <input {oninput} class="rounded-l-lg p-4 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white" placeholder="Username" />
-                    <Link<Route> to={Route::Chat}> <button {onclick} disabled={username.len()<1} class="px-8 rounded-r-lg bg-violet-600	  text-white font-bold p-4 uppercase border-violet-600 border-t border-b border-r" >{"Go Chatting!"}</button></Link<Route>>
+                <h1 class="text-green-500 text-4xl mb-8 tracking-widest drop-shadow-[0_0_10px_rgba(34,197,94,0.8)]">{"[ GALACTIC TERMINAL ]"}</h1>
+                <form class="m-4 flex flex-col items-center shadow-[0_0_20px_rgba(34,197,94,0.3)] bg-gray-900 p-10 rounded-xl border border-green-700">
+                    <p class="text-green-400 mb-4 text-sm animate-pulse">{"PLEASE ENTER YOUR DESIGNATION"}</p>
+                    <input {oninput} class="rounded p-4 text-green-400 border border-green-600 bg-black outline-none mb-6 w-full text-center focus:shadow-[0_0_15px_rgba(34,197,94,0.6)]" placeholder="Commander_Name" />
+                    <Link<Route> to={Route::Chat}> 
+                        <button {onclick} disabled={username.len()<1} class="px-8 rounded bg-green-900 hover:bg-green-700 text-green-200 font-bold p-4 uppercase border border-green-500 w-full transition duration-300" >
+                            {"INITIALIZE UPLINK"}
+                        </button>
+                    </Link<Route>>
                 </form>
             </div>
         </div>

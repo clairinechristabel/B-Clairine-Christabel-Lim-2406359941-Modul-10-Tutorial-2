@@ -48,3 +48,12 @@ Aplikasi WebChat berbasis browser ini dikembangkan menggunakan Yew dan terhubung
 
 ### WebChat Screenshot
 ![web_chat_screenshot](image-2.png)
+
+## Experiment 3.2: Be Creative!
+Pada eksperimen ini, saya melakukan modifikasi antarmuka *WebChat* secara radikal dengan mengubah temanya menjadi **Cyberpunk / Galactic Comm Link**. Kreativitas ini saya terapkan pada dua komponen utama:
+1. `login.rs`: Saya mengubah layar *login* menjadi *"GALACTIC TERMINAL"* dengan *background* berwarna hitam (*dark mode*), menambahkan efek *glowing* (*drop-shadow*) berwarna hijau khas *hacker*, dan mengganti tombolnya menjadi `"INITIALIZE UPLINK"`.
+2. `chat.rs`: Saya menyulap ruang *chat* menjadi *"GALACTIC COMM LINK"*. Warna dasar diubah menjadi hitam dan abu-abu gelap dengan teks hijau (ala *terminal* dengan `font-mono`). Saya juga mengganti *avatar* bawaan dari API `dicebear` yang awalnya *adventurer-neutral* menjadi robot *bottts*, sehingga nuansa fiksi ilmiahnya semakin terasa. Bentuk balon *chat* dan tombol kirim juga saya percantik dengan garis (*border*) dan animasi *pulse*.
+
+### Modified WebChat Screenshot
+![login_page](image-3.png)
+![chat_page](image-4.png)
