@@ -42,3 +42,9 @@ Modifikasi ini bertujuan agar kita bisa memahami dengan jelas alur pengiriman pe
 
 ### Screenshots
 ![screenshot_terminal_2](image-1.png)
+
+## Experiment 3.1: Original code
+Aplikasi WebChat berbasis browser ini dikembangkan menggunakan Yew dan terhubung ke Node.js WebSocket server.
+
+### WebChat Screenshot
+![web_chat_screenshot](image-2.png)
